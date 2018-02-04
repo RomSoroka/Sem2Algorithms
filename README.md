@@ -9,5 +9,7 @@
 ![alt text](https://github.com/BBJayy/Sem2Algorithms/blob/Z%231/ReadmeImages/PerfectHashTableCormen.png)
 
 Хеш функція виберається з універсального класса хеш-функцій: 
-![alt text] (ReadmeImages/CodeCogsEqn (1).gif)
-![alt text] (ReadmeImages/CodeCogsEqn%20(1).gif)
+![alt text] (CodeCogsEqn.gif)
+![alt text] (CodeCogsEqn%20(1).gif)
+![alt text] (CodeCogsEqn (1).gif)
+
