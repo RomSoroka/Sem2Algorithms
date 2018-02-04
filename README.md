@@ -9,5 +9,5 @@
 ![alt text] (PerfectHashTableCormen.jpg)
 
 Хеш функція виберається з універсального класса хеш-функцій: 
-$$H_{pm} = \{h_{ab} : a \in Z^*_p, b \in Z^*_p\} $$
-$$ h_{ab}(k) = ((ak+n) mod p) mod m $$
+![alt text] (CodeCogsEqn.jpg)
+![alt text] (CodeCogsEqn(1).jpg)
