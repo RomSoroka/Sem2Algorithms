@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include <random>
 
 using std::cout;
 using std::cin;
@@ -37,7 +38,7 @@ int hash(int a, int k, int b, int bigPrime, int tableSize) {
 }
 
 class Bucket {
-    int bigPrime = 1009;
+    int bigPrime = 10007;
     int a = rand() % bigPrime, b = rand() % bigPrime;
     vector<int> innerHashTable;
     
@@ -55,7 +56,8 @@ public:
         // 3.1 if collision -> randomize a,b -> step 2
         
         // size == 0 or 1 -> size += 1 else size = size^2 so that probability of collision less then 1/2 (so we save time)
-        vector<int> tempTable((innerHashTable.empty()||(innerHashTable.size()==1)) ? innerHashTable.size() + 1 : pow(innerHashTable.size(), 2));
+        int newSize = pow(sqrt(innerHashTable.size()) + 1, 2);
+        vector<int> tempTable(newSize);
         
         bool rebuild = false;
         do {
@@ -86,9 +88,10 @@ public:
             if (tempTable[h] == INT_MAX)
             {
                 tempTable[h] = elem;
-            } else { //collision
+            } else if (elem == tempTable[h]) { //collision
+                return;
+            } else
                 rebuild = true;
-            }
             
         } while (rebuild);
         
@@ -112,7 +115,7 @@ public:
         if (!innerHashTable.size()) {
             return INT_MAX;
         }
-        int innerHash = hash(a,key,b,bigPrime,innerHashTable.size());
+        int innerHash = hash(a,key,b,bigPrime,(int)innerHashTable.size());
         return innerHashTable[innerHash];
     }
     
@@ -121,22 +124,31 @@ public:
 class PerfectHashTable {
     int A, B;
     vector<Bucket> outerHashTable;
-    const int bigPrime = 1009;
+    const int bigPrime = 10007;
     int sumAllBucketSizes = 0;
+    int tableSize = 0;
     
     void buildTable(const vector<int> &values, int capacityConstant){
         do
         {
+            outerHashTable.clear();
+            outerHashTable.resize(tableSize);
+            
             sumAllBucketSizes = 0;
             A = rand() % bigPrime;
             B = rand() % bigPrime;
-            for (auto it = values.begin(); it != values.end(); it++)
+            int i = 0;
+            for (auto it = values.begin(); it != values.end(); it++, i++)
             {
-                int h = hash(A, *it, B, bigPrime, outerHashTable.size());
+                int h = hash(A, *it, B, bigPrime, (int)outerHashTable.size());
                 outerHashTable[h].add(*it);
             }
             for (auto it = outerHashTable.begin(); it != outerHashTable.end(); it++)
                 sumAllBucketSizes += it->size();
+            
+            cout << "one lap\n";
+            
+            tableSize *= 2;
             
         // rebuild outer table each time sumAllBucketSizes > capacityConstant * values.size()
         // just so if we're really unlucky and a lot of elements hash to the same bucket we don't have a huge waist of space
@@ -147,10 +159,8 @@ public:
     // ratio == values.size() / outerHashTable.size()
     // capacityConstant determins how big of a waist of memory we are ok with (smaller -> more rebuilds -> more time, but less size); used in buildTable
     PerfectHashTable(const vector<int> &values, int capacityConstant = 10, double ratio = 0.5) {
-        int tableSize = findNextPrime(ratio * double(values.size()));
-        outerHashTable.resize(tableSize);
+        tableSize = findNextPrime(sqrt(values.size()));
         buildTable(values, capacityConstant);
-        
     }
     
     // returns INT_MAX if error occured
@@ -173,9 +183,15 @@ public:
 };
 
 int main(){
+    srand(time(nullptr));
+    
+//    std::random_device rd;
+//    std::mt19937 rng(rd());
+//    std::uniform_int_distribution<int> uni(1, 10000);
+    
     vector<int> a;
-    for (int i = 0; i<10; i++) {
-        a.push_back(rand()%100);
+    for (int i = 0; i < 20; i++) {
+        a.push_back(rand() % 100);
     }
     
     PerfectHashTable b(a);
