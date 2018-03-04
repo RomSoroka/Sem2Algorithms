@@ -8,14 +8,21 @@
 
 import Foundation
 
-
-
-print("Hello, World!")
-
 var t = SplayTree<Int>()
 
-for i in 0..<10 {
-    t.add(Int(arc4random_uniform(40)))
+let rand = [5, 18, 10, 7, 4, 6]
+
+for i in 0..<6 {
+    t.add(rand[i])
 }
 
+t.show()
+
+print(t.find(elem: 5) ? "Found" : "Not found")
+t.show()
+
+print(t.delete(10)  ? "Delition succeded": "Delition failed" )
+t.show()
+
+print(t.delete(9)  ? "Delition succeded": "Delition failed")
 t.show()
