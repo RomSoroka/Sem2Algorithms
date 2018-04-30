@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84424B49208BEDD700B39DA1 /* MyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84424B48208BEDD700B39DA1 /* MyData.swift */; };
 		844664C5204D572C00171FF0 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844664C4204D572C00171FF0 /* main.swift */; };
 		844664CC204E9B9C00171FF0 /* OptimalBinaryTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844664CB204E9B9C00171FF0 /* OptimalBinaryTree.swift */; };
 /* End PBXBuildFile section */
@@ -24,6 +25,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		84424B48208BEDD700B39DA1 /* MyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyData.swift; sourceTree = "<group>"; };
 		844664C1204D572C00171FF0 /* Z#4 Optimal Binary Search Tree */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Z#4 Optimal Binary Search Tree"; sourceTree = BUILT_PRODUCTS_DIR; };
 		844664C4204D572C00171FF0 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		844664CB204E9B9C00171FF0 /* OptimalBinaryTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptimalBinaryTree.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				844664C4204D572C00171FF0 /* main.swift */,
+				84424B48208BEDD700B39DA1 /* MyData.swift */,
 				844664CB204E9B9C00171FF0 /* OptimalBinaryTree.swift */,
 			);
 			path = "Z#4 Optimal Binary Search Tree";
@@ -123,6 +126,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84424B49208BEDD700B39DA1 /* MyData.swift in Sources */,
 				844664C5204D572C00171FF0 /* main.swift in Sources */,
 				844664CC204E9B9C00171FF0 /* OptimalBinaryTree.swift in Sources */,
 			);

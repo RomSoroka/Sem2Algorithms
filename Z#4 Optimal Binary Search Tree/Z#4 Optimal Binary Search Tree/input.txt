@@ -1,0 +1,4 @@
+Veres 4132:TeorAlgo 4234 IBM 656 DSL 76 RIVIM 243 MOOPJava 41
+Slabospitski 5145:DataAnalisis 514 Stuff 635 Things 562
+Kolianova 6267:Ekologia 423 Models 35
+Linder 5347:Algorithms 626 Algebra 254 OverallAlgebra 155 Math 245 MoreMath 452 Compuhters 234
